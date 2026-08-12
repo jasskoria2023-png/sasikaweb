@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 
-export function TourCard({ v }) {
+export function TourCard({ v }: { v: any }) {
   return (
     <div className="group relative flex flex-col justify-between h-full p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-emerald-500 transition-all duration-300">
       <div>

@@ -17,7 +17,7 @@ export default function HorizontalFlagBar() {
         {infiniteSteps.map((step, index) => (
           <div
             key={index}
-            className={`${step.bg} h-32 w-32 flex-shrink-0 flex flex-col items-center justify-center p-4 transition-all duration-300 hover:scale-110 hover:z-20 group cursor-pointer shadow-lg rounded-lg mx-2`}
+            className={`h-32 w-32 shrink-0 flex flex-col items-center justify-center p-4 transition-all duration-300 hover:scale-110 hover:z-20 group cursor-pointer shadow-lg rounded-lg mx-2`}
           >
             <span
               className={`fi fi-${step.country} text-6xl mb-2 opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all rounded-sm shadow-md`}

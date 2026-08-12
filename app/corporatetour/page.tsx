@@ -100,12 +100,12 @@ export default function CorporateToursPage() {
             className="w-full h-full object-cover object-center"
           />
           {/* Gradient Overlay for Text Contrast */}
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/60" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/50 to-slate-900" />
+          <div className="absolute inset-0 bg-linear-to-r from-slate-950 via-slate-950/90 to-slate-950/60" />
+          <div className="absolute inset-0 bg-linear-to-b from-transparent via-slate-950/50 to-slate-900" />
         </div>
 
         {/* Emerald Ambient Glow */}
-        <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-emerald-500/15 blur-[130px] rounded-full pointer-events-none z-0" />
+        <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-175 h-87.5 bg-emerald-500/15 blur-[130px] rounded-full pointer-events-none z-0" />
 
         {/* Hero Content */}
         <div className="max-w-7xl mx-auto relative z-10 w-full">
@@ -192,7 +192,7 @@ export default function CorporateToursPage() {
                       alt={pkg.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-slate-950/70 via-transparent to-transparent" />
                     <span className="absolute top-4 left-4 text-[10px] font-black uppercase tracking-wider bg-slate-900/90 text-emerald-400 px-3 py-1 rounded-full border border-slate-700">
                       {pkg.category}
                     </span>

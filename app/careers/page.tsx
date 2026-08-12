@@ -74,8 +74,8 @@ export default function Careers() {
     <main className="min-h-screen bg-slate-900 text-white selection:bg-emerald-200 selection:text-emerald-900">
       
       {/* HERO SECTION */}
-      <section className="relative py-24 px-6 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-900 border-b border-slate-800/80">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none" />
+      <section className="relative py-24 px-6 overflow-hidden bg-linear-to-b from-slate-950 via-slate-900 to-slate-900 border-b border-slate-800/80">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-75 bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none" />
 
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
@@ -120,13 +120,13 @@ export default function Careers() {
 
             {/* Visual Accent */}
             <div className="lg:col-span-6">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-100 aspect-[4/3]">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 bg-slate-100 aspect-4/3">
                 <img 
                   src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80&w=1000" 
                   alt="International Outbound Aviation" 
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6 text-white">
                   <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
                     <Globe size={14} /> Global Outbound Travel
@@ -240,10 +240,10 @@ export default function Careers() {
               ))}
             </div>
           </div>
-
+w-[400px]
           {/* SPONTANEOUS APPLICATION CTA BANNER */}
           <div className="p-8 md:p-12 rounded-3xl bg-slate-900 text-white relative overflow-hidden shadow-xl border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-emerald-500/10 blur-[100px] rounded-full pointer-events-none" />
+            <div className="absolute top-0 right-0  h-100 bg-emerald-500/10 blur-[100px] rounded-full pointer-events-none" />
             
             <div className="relative z-10 max-w-xl">
               <span className="text-xs font-extrabold uppercase tracking-widest text-emerald-400">Join Our Talent Network</span>

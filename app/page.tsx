@@ -215,7 +215,7 @@ export default function Home() {
                         alt={v.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-slate-950/70 via-transparent to-transparent" />
                       
                       <span className="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider bg-slate-900/90 text-emerald-400 px-2.5 py-1 rounded-md border border-slate-700">
                         {v.country}
