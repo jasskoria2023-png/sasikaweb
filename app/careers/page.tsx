@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { 
-  Sparkles, Briefcase, MapPin, Clock, ArrowUpRight, CheckCircle2,
-  Rocket, Users, Coffee, Heart, Globe, Plane, Passport, ShieldCheck
+  MapPin, Clock, ArrowUpRight, CheckCircle2,
+  Rocket, Heart, Globe, Plane
 } from 'lucide-react';
 import Footer from '../components/Footer';
 
