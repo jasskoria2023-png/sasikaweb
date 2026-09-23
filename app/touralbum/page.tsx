@@ -48,33 +48,7 @@ export default function TourAlbumPage() {
     <div className="bg-slate-950 min-h-screen text-slate-100 font-sans selection:bg-emerald-500 selection:text-slate-950">
       
       {/* HERO SECTION */}
-      <section className="relative min-h-[85vh] py-32 px-6 overflow-hidden border-b border-slate-900 flex items-center">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/images/imgbg3.png"
-            alt="Illustrated world landmarks and travel destinations"
-            className="w-full h-full object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-linear-to-r from-slate-950 via-slate-950/90 to-slate-950/60" />
-          <div className="absolute inset-0 bg-linear-to-b from-transparent via-slate-950/50 to-slate-950" />
-        </div>
-
-        <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-175 h-87.5 bg-emerald-500/15 blur-[130px] rounded-full pointer-events-none z-0" />
-
-        <div className="max-w-7xl mx-auto w-full relative z-10 space-y-6">
-
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.15]">
-            <span className="text-white">Relive Our </span>
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-400 via-teal-300 to-emerald-500 underline decoration-emerald-500/30 underline-offset-8">
-              Unforgettable Journeys
-            </span>
-          </h1>
-
-          <p className="max-w-3xl text-slate-300 text-sm md:text-base leading-relaxed drop-shadow-sm">
-            Watch real footage from our previous group tours, wilderness safaris, heritage walks, and island getaways. See what awaits on your next voyage.
-          </p>
-        </div>
-      </section>
+     
 
       {/* FEATURED TOUR VIDEO PLAYER */}
       <section ref={playerRef} className="py-12 px-6 relative z-10 bg-slate-950">
