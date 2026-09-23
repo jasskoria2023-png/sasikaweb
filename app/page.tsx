@@ -6,10 +6,14 @@ import {
   Filter,
   ChevronLeft,
   ChevronRight,
-  FilterX
+  FilterX,
+  Loader2,
+  CheckCircle2,
+  AlertCircle
 } from 'lucide-react';
 import ImageSlider from './components/ImageSlider';
 import Footer from './components/Footer';
+import { sendInquiryEmail } from './actions/sendEmail'; // Adjust path if needed
 
 interface TourItem {
   title: string;
@@ -96,6 +100,10 @@ export default function Home() {
   const [selectedCountry, setSelectedCountry] = useState<string>('All');
   const [selectedMonth, setSelectedMonth] = useState<string>('All');
 
+  // Form handling state
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
+
   // Pagination State
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 4;
@@ -133,6 +141,24 @@ export default function Home() {
     setCurrentPage(1);
   };
 
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatus(null);
+
+    const formData = new FormData(e.currentTarget);
+    const result = await sendInquiryEmail(formData);
+
+    setIsSubmitting(false);
+
+    if (result.success) {
+      setStatus({ type: 'success', message: 'Thank you! Your inquiry has been sent successfully.' });
+      (e.target as HTMLFormElement).reset();
+    } else {
+      setStatus({ type: 'error', message: result.error || 'Something went wrong.' });
+    }
+  };
+
   return (
     <main className="bg-white text-slate-100 min-h-screen selection:bg-emerald-500 selection:text-slate-950">
       
@@ -142,7 +168,7 @@ export default function Home() {
       </section>
 
       {/* TOURS DISPLAY SECTION (WHITE BACKGROUND) */}
-      <section className="py-0 px-6 max-w-7xl mx-auto bg-white rounded-3xl my-12  text-slate-900">
+      <section className="py-0 px-6 max-w-7xl mx-auto bg-white rounded-3xl my-12 text-slate-900">
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
           <div>
             <h2 className="text-3xl font-extrabold text-slate-900">Upcoming Expeditions</h2>
@@ -331,30 +357,58 @@ export default function Home() {
             <h3 className="text-xl font-bold text-white mb-1">Plan Your Journey</h3>
             <p className="text-slate-400 text-xs mb-6">Fill in the details below and our team will craft a personalized itinerary for you.</p>
             
-            <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
+            <form onSubmit={handleFormSubmit} className="space-y-4">
               <input 
                 type="text" 
+                name="name"
+                required
                 placeholder="Full Name" 
                 className="w-full bg-slate-800 border border-slate-700/60 focus:border-emerald-500 rounded-xl p-3 text-sm text-white focus:outline-none transition-colors" 
               />
               <input 
                 type="email" 
+                name="email"
+                required
                 placeholder="Email Address" 
                 className="w-full bg-slate-800 border border-slate-700/60 focus:border-emerald-500 rounded-xl p-3 text-sm text-white focus:outline-none transition-colors" 
               />
               <input 
                 type="text" 
+                name="phone"
                 placeholder="Contact Number" 
                 className="w-full bg-slate-800 border border-slate-700/60 focus:border-emerald-500 rounded-xl p-3 text-sm text-white focus:outline-none transition-colors" 
               />
               <textarea 
                 rows={3} 
+                name="message"
+                required
                 placeholder="Tell us about your destination goals..." 
                 className="w-full bg-slate-800 border border-slate-700/60 focus:border-emerald-500 rounded-xl p-3 text-sm text-white focus:outline-none transition-colors" 
               />
 
-              <button className="w-full bg-emerald-500 text-slate-950 font-extrabold py-3.5 rounded-xl hover:bg-emerald-400 transition flex items-center justify-center gap-2 text-sm shadow-lg shadow-emerald-500/20">
-                Request Access <ArrowUpRight size={18} />
+              {status && (
+                <div className={`p-3 rounded-xl text-xs flex items-center gap-2 ${
+                  status.type === 'success' ? 'bg-emerald-950/80 text-emerald-400 border border-emerald-800' : 'bg-rose-950/80 text-rose-400 border border-rose-800'
+                }`}>
+                  {status.type === 'success' ? <CheckCircle2 size={16} /> : <AlertCircle size={16} />}
+                  <span>{status.message}</span>
+                </div>
+              )}
+
+              <button 
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-emerald-500 text-slate-950 font-extrabold py-3.5 rounded-xl hover:bg-emerald-400 disabled:opacity-50 transition flex items-center justify-center gap-2 text-sm shadow-lg shadow-emerald-500/20 cursor-pointer"
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 size={18} className="animate-spin" /> Sending...
+                  </>
+                ) : (
+                  <>
+                    Details Required<ArrowUpRight size={18} />
+                  </>
+                )}
               </button>
             </form>
           </div>
