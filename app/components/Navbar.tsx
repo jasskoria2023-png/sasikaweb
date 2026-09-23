@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface NavLink {
   name: string;
@@ -28,8 +29,15 @@ export default function Navbar() {
           
           {/* Logo Section */}
           <div className="flex-shrink-0">
-            <Link href="/" className="text-2xl font-bold tracking-tighter text-emerald-500">
-              Vactionstnh.com
+            <Link href="/" className="flex items-center gap-2 text-2xl font-bold tracking-tighter text-blue-400">
+              <Image
+                src="/images/logo.jpg"
+                alt="Vacations T&H logo"
+                width={150}
+                height={42}
+                className="h-[42px] w-[150px] max-w-none shrink-0 object-contain"
+              />
+             
             </Link>
           </div>
 
@@ -40,7 +48,7 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="rounded-md px-3 py-2 text-base font-medium text-emerald-500 transition-colors hover:text-emerald-300"
+                  className="rounded-md px-3 py-2 text-base font-medium text-cyan-400 transition-colors hover:text-yellow-300"
                 >
                   {link.name}
                 </Link>
@@ -77,7 +85,7 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="block rounded-md px-3 py-2 text-base font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-600"
+                className="block rounded-md px-3 py-2 text-base font-medium text-yellow-600 hover:bg-yellow-50 hover:text-yellow-700"
               >
                 {link.name}
               </Link>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Rocket, Github, Linkedin, Twitter, Mail, MapPin, Facebook, Instagram, Youtube } from 'lucide-react';
+import { Github, Linkedin, Twitter, Mail, MapPin, Facebook, Instagram, Youtube } from 'lucide-react';
+import Image from 'next/image';
 import { TikTok_Sans } from 'next/font/google';
 
 const Footer = () => {
@@ -13,8 +14,14 @@ const Footer = () => {
           {/* Brand Column */}
           <div className="space-y-4">
             <div className="flex items-center gap-2 text-white">
-              <Rocket className="w-8 h-8 text-emerald-500" />
-              <span className="text-2xl font-bold tracking-tight">Vactionstnh</span>
+              <Image
+                src="/images/logo.jpg"
+                alt="Vacations T&H logo"
+                width={150}
+                height={60}
+                className="h-[60px] w-[150px] shrink-0 object-contain"
+              />
+
             </div>
             <p className="text-sm leading-relaxed text-slate-400">
              Vacations TSH is a Sri Lanka-based outbound travel agency offering customized international tour packages, flight ticketing, visa assistance, and complete itinerary planning for overseas holidays, family trips, and group travel.</p>
