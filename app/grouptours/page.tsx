@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { 
   ShieldCheck, 
   ArrowUpRight, 
@@ -15,6 +15,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import Footer from '../components/Footer';
+import { sendInquiryEmail } from '../actions/sendEmail';
 
 interface TourPackage {
   id: string;
@@ -45,6 +46,8 @@ export default function GroupToursPage() {
     month: 'Any Month',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
   const availableMonths = [
     "All", "January", "February", "March", "April", "May", "June", 
@@ -55,70 +58,92 @@ export default function GroupToursPage() {
 
   const tours: TourPackage[] = [
     {
-      id: "singapore-classic",
-      title: "Classic Singapore Experience",
-      destination: "Singapore",
-      image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&q=80&w=800",
-      description: "Immerse in tropical beaches, landmark tours, island hopping, and private villa stays with curated dining.",
-      duration: "5 Days / 4 Nights",
-      departureMonths: ["March", "June", "September", "December"],
+      id: "Azerbaijan and Georgia",
+      title: "Journey through the breathtaking landscapes",
+      destination: "Azerbaijan & Georgia",
+      image: "/images/azerbaijan.jpeg",
+      description: "Embark on an unforgettable 11-day journey through the breathtaking landscapes, rich history and vibrant cultures of Azerbaijan and Georgia. Discover the modern charm of Baku, explore spectacular mountain scenery, experience ancient cities and charming villages, and enjoy the unique flavours and traditions of the Caucasus. From iconic landmarks and scenic countryside to memorable cultural experiences, this carefully designed group tour offers the perfect combination of sightseeing, comfort and adventure",
+      duration: "11 Days / 10 Nights",
+      departureMonths: ["December", "February", "April"],
       category: "Leisure",
-      priceFrom: "$1,250"
+      priceFrom: "Please contact for "
     },
     {
-      id: "european-delight",
-      title: "Classic European Delight",
-      destination: "France, Switzerland, Italy",
-      image: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&q=80&w=800",
-      description: "Explore Paris, Swiss Alps, and Rome with guided landmark tours, high-speed rail passes, and luxury stays.",
+      id: "Philippines",
+      title: "Breathtaking beauty of the Philippines ",
+      destination: "Philippines",
+      image: "/images/Phillipinnes.jpeg",
+      description: "Experience the breathtaking beauty of the Philippines on our unforgettable 9-day group tour! Discover pristine white-sand beaches, crystal-clear turquoise waters, spectacular islands and vibrant cities while enjoying the warm hospitality and unique culture of this tropical paradise. From exciting island adventures and scenic landscapes to relaxing beach experiences, this carefully designed journey offers the perfect combination of adventure, relaxation and unforgettable memories.",
+      duration: "9 Days / 8 Nights",
+      departureMonths: ["January", "December"],
+      category: "Leisure",
+      priceFrom: "Please contact for "
+    },
+    {
+      id: "Vietnam",
+      title: "Beauty, history and culture ",
+      destination: "Vietnam",
+      image: "/images/Vietnam.jpeg",
+      description: "Embark on an unforgettable 12-day journey through the captivating beauty, history and culture of Vietnam. From vibrant cities and ancient heritage sites to breathtaking mountain landscapes, scenic coastlines and spectacular natural wonders, this carefully crafted group tour offers an incredible variety of experiences. Discover the authentic flavours of Vietnamese cuisine, explore iconic attractions and create lifelong memories while travelling with a fun and friendly group.",
+      duration: "12 Days / 11 Nights",
+      departureMonths: ["February", "November"],
+      category: "Leisure",
+      priceFrom: "Please contact for " 
+    },
+    {
+      id: "China",
+      title: "wonders of China",
+      destination: "China",
+      image: "/images/China.jpeg",
+      description: "Discover the wonders of China on an unforgettable 9-day group tour! Explore a fascinating blend of ancient history, vibrant culture and modern innovation while visiting iconic landmarks, breathtaking landscapes and world-famous cities. From magnificent historical sites to exciting cultural experiences, this carefully designed journey promises unforgettable memories and an incredible taste of China.",
+      duration: "9 Days / 8 Nights",
+      departureMonths: ["March", "September"],
+      category: "Leisure",
+      priceFrom: "Please contact for "
+    },
+    {
+      id: "Turkey",
+      title: "Magic of Turkey",
+      destination: "Turkey",
+      image: "/images/Turkey.jpeg",
+      description: "Discover the magic of Turkey on an unforgettable 8-day group tour! Explore Istanbul’s iconic landmarks, experience the beauty of the Bosphorus, discover ancient history, breathtaking landscapes and vibrant Turkish culture. From fascinating historical sites and colourful bazaars to delicious cuisine and unforgettable scenic experiences, this journey offers the perfect blend of history, culture, adventure and relaxation.",
+      duration: "8 Days / 7 Nights",
+      departureMonths: ["March", "October"],
+      category: "Leisure",
+      priceFrom: "Please contact for "
+    },
+    {
+      id: "South-Korea",
+      title: "Beauty of South Korea ",
+      destination: "South Korea",
+      image: "/images/SouthKorea.jpeg",
+      description: "Discover the captivating beauty of South Korea on an unforgettable 10-day group tour! Explore vibrant Seoul, ancient palaces, scenic mountains, charming traditional villages and modern city life. Experience Korea’s unique culture, delicious cuisine and breathtaking landscapes while creating unforgettable memories with your group.",
       duration: "10 Days / 9 Nights",
-      departureMonths: ["May", "July", "August", "October"],
-      category: "Cultural",
-      priceFrom: "$2,890"
-    },
-    {
-      id: "japan-blossoms",
-      title: "Japan Cherry Blossom Special",
-      destination: "Tokyo, Kyoto, Mt. Fuji",
-      image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=800",
-      description: "Discover Tokyo and Kyoto featuring bullet train passes, traditional Ryokan stays, and private tea ceremonies.",
-      duration: "7 Days / 6 Nights",
-      departureMonths: ["March", "April"],
-      category: "Seasonal",
-      priceFrom: "$2,450"
-    },
-    {
-      id: "dubai-luxury",
-      title: "Dubai Luxury & Desert Safari",
-      destination: "Dubai, UAE",
-      image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=800",
-      description: "Experience 5-star hospitality, private dune bashing, Burj Khalifa entry, and yacht cruises across Dubai Marina.",
-      duration: "4 Days / 3 Nights",
-      departureMonths: ["January", "February", "November", "December"],
-      category: "Luxury",
-      priceFrom: "$1,100"
-    },
-    {
-      id: "bali-wellness",
-      title: "Bali Tropical Wellness Retreat",
-      destination: "Ubud & Seminyak, Indonesia",
-      image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=80&w=800",
-      description: "Rejuvenate with daily yoga, organic culinary workshops, private pool villa relaxation, and sacred temple excursions.",
-      duration: "6 Days / 5 Nights",
-      departureMonths: ["May", "June", "July", "August"],
+      departureMonths: ["April", "October"],
       category: "Leisure",
-      priceFrom: "$1,380"
+      priceFrom: "Please contact for "
     },
     {
-      id: "vietnam-heritage",
-      title: "Vietnam Northern Heritage Tour",
-      destination: "Hanoi & Ha Long Bay",
-      image: "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&q=80&w=800",
-      description: "Cruise through limestone karsts in Ha Long Bay, tour ancient Hanoi street food, and visit historic pagodas.",
-      duration: "6 Days / 5 Nights",
-      departureMonths: ["February", "March", "October", "November"],
-      category: "Cultural",
-      priceFrom: "$980"
+      id: "Japan",
+      title: "Timeless beauty of Japan",
+      destination: "Japan",
+      image: "/images/Japan.jpeg",
+      description: "Experience the timeless beauty of Japan on an unforgettable 10-day group tour! Discover vibrant cities, ancient temples, stunning natural landscapes and unique Japanese traditions. From the excitement of Tokyo to cultural treasures and scenic destinations, enjoy the perfect blend of tradition, technology, culture and unforgettable experiences.",
+      duration: "10 Days / 9 Nights",
+      departureMonths: ["April", "October"],
+      category: "Leisure",
+      priceFrom: "Please contact for "
+    },
+    {
+      id: "Morocco",
+      title: "Enchanting Beauty of Morocco",
+      destination: "Morocco",
+      image: "/images/Morocco.jpeg",
+      description: "Discover the enchanting beauty of Morocco on an unforgettable 9-day group tour! Explore vibrant souks, ancient medinas, magnificent palaces and breathtaking landscapes, from the Atlas Mountains to the golden Sahara Desert. Experience Morocco’s rich culture, fascinating history, traditional cuisine and warm hospitality on a journey filled with unforgettable moments.",
+      duration: "9 Days / 8 Nights",
+      departureMonths: ["May", "December"],
+      category: "Leisure",
+      priceFrom: "Please contact for "
     }
   ];
 
@@ -141,11 +166,6 @@ export default function GroupToursPage() {
     });
   }, [searchQuery, selectedMonth, selectedCategory, tours]);
 
-  // Reset page number on filter change
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [searchQuery, selectedMonth, selectedCategory]);
-
   // Calculate Pagination
   const totalPages = Math.ceil(filteredTours.length / itemsPerPage);
   const paginatedTours = useMemo(() => {
@@ -160,9 +180,21 @@ export default function GroupToursPage() {
     setCurrentPage(1);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert('Thank you! Your travel request has been submitted. Our team will get back to you shortly.');
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    const result = await sendInquiryEmail(new FormData(e.currentTarget));
+
+    setIsSubmitting(false);
+
+    if (result.success) {
+      setSubmitStatus({ type: 'success', message: 'Thank you! Your inquiry has been sent successfully.' });
+      setFormData({ name: '', email: '', phone: '', month: 'Any Month', message: '' });
+    } else {
+      setSubmitStatus({ type: 'error', message: result.error || 'Something went wrong.' });
+    }
   };
 
   return (
@@ -194,7 +226,10 @@ export default function GroupToursPage() {
                   type="text" 
                   placeholder="Search destination or tour..." 
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e) => {
+                    setSearchQuery(e.target.value);
+                    setCurrentPage(1);
+                  }}
                   className="w-full bg-slate-800/80 border border-slate-700/80 focus:border-emerald-500 rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:outline-none transition-colors"
                 />
               </div>
@@ -204,7 +239,10 @@ export default function GroupToursPage() {
                 <Calendar className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
                 <select 
                   value={selectedMonth}
-                  onChange={(e) => setSelectedMonth(e.target.value)}
+                  onChange={(e) => {
+                    setSelectedMonth(e.target.value);
+                    setCurrentPage(1);
+                  }}
                   className="w-full bg-slate-800/80 border border-slate-700/80 focus:border-emerald-500 rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:outline-none appearance-none cursor-pointer transition-colors"
                 >
                   <option value="All">All Departure Months</option>
@@ -218,7 +256,10 @@ export default function GroupToursPage() {
               <div className="md:col-span-3">
                 <select 
                   value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  onChange={(e) => {
+                    setSelectedCategory(e.target.value);
+                    setCurrentPage(1);
+                  }}
                   className="w-full bg-slate-800/80 border border-slate-700/80 focus:border-emerald-500 rounded-xl px-4 py-3 text-sm text-white focus:outline-none appearance-none cursor-pointer transition-colors"
                 >
                   <option value="All">All Travel Types</option>
@@ -430,6 +471,7 @@ export default function GroupToursPage() {
                 <label className="block text-[11px] font-bold text-slate-400 uppercase mb-1">Full Name</label>
                 <input 
                   type="text" 
+                  name="name"
                   required
                   placeholder="John Doe" 
                   value={formData.name}
@@ -443,6 +485,7 @@ export default function GroupToursPage() {
                   <label className="block text-[11px] font-bold text-slate-400 uppercase mb-1">Email Address</label>
                   <input 
                     type="email" 
+                    name="email"
                     required
                     placeholder="john@example.com" 
                     value={formData.email}
@@ -454,6 +497,7 @@ export default function GroupToursPage() {
                   <label className="block text-[11px] font-bold text-slate-400 uppercase mb-1">Contact Number</label>
                   <input 
                     type="tel" 
+                    name="phone"
                     required
                     placeholder="+1 (555) 000-0000" 
                     value={formData.phone}
@@ -466,6 +510,7 @@ export default function GroupToursPage() {
               <div>
                 <label className="block text-[11px] font-bold text-slate-400 uppercase mb-1">Preferred Travel Month</label>
                 <select
+                  name="month"
                   value={formData.month}
                   onChange={(e) => setFormData({...formData, month: e.target.value})}
                   className="w-full bg-slate-900 border border-slate-800 focus:border-emerald-500 rounded-xl p-3 text-sm text-white focus:outline-none transition-colors"
@@ -480,7 +525,9 @@ export default function GroupToursPage() {
               <div>
                 <label className="block text-[11px] font-bold text-slate-400 uppercase mb-1">Special Requirements / Message</label>
                 <textarea 
+                  name="message"
                   rows={3} 
+                  required
                   placeholder="Tell us about your target destinations, group size, or travel dates..." 
                   value={formData.message}
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
@@ -488,11 +535,18 @@ export default function GroupToursPage() {
                 />
               </div>
 
+              {submitStatus && (
+                <p className={`text-sm ${submitStatus.type === 'success' ? 'text-emerald-400' : 'text-red-400'}`} role="status">
+                  {submitStatus.message}
+                </p>
+              )}
+
               <button 
                 type="submit" 
+                disabled={isSubmitting}
                 className="w-full bg-emerald-500 text-slate-950 font-extrabold py-3.5 rounded-xl hover:bg-emerald-400 transition flex items-center justify-center gap-2 text-sm shadow-lg shadow-emerald-500/20"
               >
-                Submit Inquiry <ArrowUpRight size={18} />
+                {isSubmitting ? 'Sending...' : 'Submit Inquiry'} <ArrowUpRight size={18} />
               </button>
             </form>
           </div>

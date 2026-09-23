@@ -8,6 +8,7 @@ export async function sendInquiryEmail(formData: FormData) {
   const name = formData.get('name') as string;
   const email = formData.get('email') as string;
   const phone = formData.get('phone') as string;
+  const month = formData.get('month') as string;
   const message = formData.get('message') as string;
 
   if (!name || !email || !message) {
@@ -25,6 +26,7 @@ export async function sendInquiryEmail(formData: FormData) {
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+        <p><strong>Preferred Travel Month:</strong> ${month || 'Any Month'}</p>
         <p><strong>Destination Goals / Message:</strong></p>
         <p>${message}</p>
       `,

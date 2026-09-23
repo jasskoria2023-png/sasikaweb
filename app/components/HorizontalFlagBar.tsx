@@ -1,12 +1,27 @@
 export default function HorizontalFlagBar() {
-  const steps = [
-    { country: 'sg', label: 'Singapore',  },
-    { country: 'th', label: 'Thailand',  },
-    { country: 'my', label: 'Malaysia', },
-    { country: 'in', label: 'India', },
-    { country: 'ae', label: 'UAE',  },
-    { country: 'mv', label: 'Maldives',  },
-  ];
+const steps = [
+  { country: 'az', label: 'Azerbaijan' },
+  { country: 'cn', label: 'China' },
+  { country: 'fr', label: 'France' },
+  { country: 'ge', label: 'Georgia' },
+  { country: 'gr', label: 'Greece' },
+  { country: 'in', label: 'India' },
+  { country: 'it', label: 'Italy' },
+  { country: 'jp', label: 'Japan' },
+  { country: 'ke', label: 'Kenya' },
+  { country: 'my', label: 'Malaysia' },
+  { country: 'mv', label: 'Maldives' },
+  { country: 'ma', label: 'Morocco' },
+  { country: 'ph', label: 'Philippines' },
+  { country: 'sg', label: 'Singapore' },
+  { country: 'kr', label: 'South Korea' },
+  { country: 'ch', label: 'Switzerland' },
+  { country: 'th', label: 'Thailand' },
+  { country: 'tr', label: 'Turkey' },
+  { country: 'ae', label: 'UAE' },
+  { country: 'gb', label: 'United Kingdom' },
+  { country: 'vn', label: 'Vietnam' },
+];
 
   // Duplicate items to create a seamless infinite loop
   const infiniteSteps = [...steps, ...steps];
