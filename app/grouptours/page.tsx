@@ -201,17 +201,27 @@ export default function GroupToursPage() {
     <div className="bg-white text-slate-100 min-h-screen selection:bg-emerald-500 selection:text-slate-950">
       
       {/* HERO SECTION */}
-      <section className="relative py-24 px-6 border-b border-slate-800 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none" />
+      <section className="relative min-h-[85vh] py-32 px-6 border-b border-slate-800 overflow-hidden flex items-center">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/azerbaijan.jpeg"
+            alt="Azerbaijan and Georgia travel background"
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-linear-to-r from-slate-950 via-slate-950/90 to-slate-950/60" />
+          <div className="absolute inset-0 bg-linear-to-b from-transparent via-slate-950/50 to-slate-900" />
+        </div>
 
-        <div className="max-w-6xl mx-auto relative z-10 text-center">
+        <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-175 h-87.5 bg-emerald-500/15 blur-[130px] rounded-full pointer-events-none z-0" />
+
+        <div className="max-w-7xl mx-auto relative z-10 w-full">
           <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-widest mb-6">
             <Globe2 size={14} /> Curated International Group Tours
           </span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tight mb-6">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tight mb-6 max-w-4xl">
             Discover The World <span className="text-emerald-400">Together.</span>
           </h1>
-          <p className="text-slate-400 text-base md:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
+          <p className="text-slate-300 text-base md:text-xl max-w-3xl leading-relaxed mb-10 drop-shadow-sm">
             Expertly planned group itineraries with end-to-end logistics, quality accommodations, and dedicated on-ground guides.
           </p>
 
@@ -312,7 +322,7 @@ export default function GroupToursPage() {
                         alt={tour.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-slate-950/70 via-transparent to-transparent" />
                       
                       <span className="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider bg-slate-900/90 text-emerald-400 px-2.5 py-1 rounded-md border border-slate-700">
                         {tour.category}

@@ -58,7 +58,7 @@ export default function InvestorPage() {
             key={i} 
             className="group p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-emerald-500 transition-all duration-300 flex flex-col justify-between h-full"
           >
-           <div className="relative w-full h-52 mb-6 rounded-3xl overflow-hidden p-1.5 bg-gradient-to-b from-white/90 via-slate-100/50 to-slate-200/60 shadow-[inset_0_2px_4px_rgba(0,0,0,0.06),0_10px_25px_-5px_rgba(0,0,0,0.05)] border border-white/60 group-hover:border-blue-400/30 transition-all duration-500">
+           <div className="relative w-full h-52 mb-6 rounded-3xl overflow-hidden p-1.5 bg-linear-to-b from-white/90 via-slate-100/50 to-slate-200/60 shadow-[inset_0_2px_4px_rgba(0,0,0,0.06),0_10px_25px_-5px_rgba(0,0,0,0.05)] border border-white/60 group-hover:border-blue-400/30 transition-all duration-500">
           
           {/* Inner Highlight Layer for 3D Relief Effect */}
           <div className="relative w-full h-full rounded-[1.25rem] overflow-hidden shadow-inner">
@@ -68,7 +68,7 @@ export default function InvestorPage() {
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
             />
             {/* Subtle Gradient Overlay for visual depth */}
-            <div className="absolute inset-0 bg-gradient-to-t  via-transparent to-white/10 opacity-60 group-hover:opacity-20 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-linear-to-t from-slate-950/40 via-transparent to-white/10 opacity-60 group-hover:opacity-20 transition-opacity duration-500" />
           </div>
         </div>
             <div>

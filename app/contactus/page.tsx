@@ -25,15 +25,25 @@ export default function ContactUs() {
   return (
     <main className="min-h-screen bg-slate-900 text-white selection:bg-emerald-200 selection:text-emerald-900">
       {/* HERO SECTION */}
-      <section className="relative py-24 px-6 overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-900 border-b border-slate-800/80">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none" />
+      <section className="relative min-h-[85vh] py-32 px-6 overflow-hidden border-b border-slate-800/80 flex items-center">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/outbound2.png"
+            alt="Global travel destinations background"
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-linear-to-r from-slate-950 via-slate-950/90 to-slate-950/60" />
+          <div className="absolute inset-0 bg-linear-to-b from-transparent via-slate-950/50 to-slate-900" />
+        </div>
 
-        <div className="max-w-7xl mx-auto text-center relative z-10">
+        <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-175 h-87.5 bg-emerald-500/15 blur-[130px] rounded-full pointer-events-none z-0" />
 
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
+        <div className="max-w-7xl mx-auto w-full relative z-10">
+
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 max-w-4xl">
             <span className="text-white" >Let’s Design Your</span> <span className="text-emerald-400 underline decoration-emerald-500/30 underline-offset-8">Next Journey</span>
           </h1>
-          <p className="max-w-2xl mx-auto text-slate-400 text-base md:text-lg leading-relaxed">
+          <p className="max-w-3xl text-slate-300 text-base md:text-lg leading-relaxed drop-shadow-sm">
             Whether you are booking an upcoming group tour or customizing a private multi-destination expedition, our travel architects are ready to assist you.
           </p>
         </div>
@@ -107,7 +117,7 @@ export default function ContactUs() {
             <div className="p-8 md:p-12 rounded-3xl bg-slate-50 text-slate-900 shadow-xl border border-slate-200 relative overflow-hidden">
               
               {/* Tour Accent Top Bar */}
-              <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600" />
+              <div className="absolute top-0 left-0 right-0 h-2 bg-linear-to-r from-emerald-500 via-teal-500 to-emerald-600" />
 
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs font-black uppercase tracking-wider text-emerald-700 bg-emerald-100/80 px-3 py-1 rounded-full border border-emerald-200">

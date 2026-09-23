@@ -146,16 +146,21 @@ export default function Home() {
     setIsSubmitting(true);
     setStatus(null);
 
-    const formData = new FormData(e.currentTarget);
-    const result = await sendInquiryEmail(formData);
+    try {
+      const formData = new FormData(e.currentTarget);
+      const result = await sendInquiryEmail(formData);
 
-    setIsSubmitting(false);
-
-    if (result.success) {
-      setStatus({ type: 'success', message: 'Thank you! Your inquiry has been sent successfully.' });
-      (e.target as HTMLFormElement).reset();
-    } else {
-      setStatus({ type: 'error', message: result.error || 'Something went wrong.' });
+      if (result.success) {
+        setStatus({ type: 'success', message: 'Thank you! Your inquiry has been sent successfully.' });
+        e.currentTarget.reset();
+      } else {
+        setStatus({ type: 'error', message: result.error || 'Something went wrong.' });
+      }
+    } catch (error) {
+      console.error('Inquiry submission failed:', error);
+      setStatus({ type: 'error', message: 'Unable to connect to the email service. Please try again.' });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 

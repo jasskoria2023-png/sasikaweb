@@ -19,7 +19,7 @@ const Footer = () => {
                 alt="Vacations T&H logo"
                 width={150}
                 height={60}
-                className="h-[60px] w-[150px] shrink-0 object-contain"
+                className="h-15 w-37.5 shrink-0 object-contain"
               />
 
             </div>
