@@ -26,24 +26,26 @@ export default function ContactUs() {
     <main className="min-h-screen bg-slate-900 text-white selection:bg-emerald-200 selection:text-emerald-900">
       {/* HERO SECTION */}
       <section className="relative min-h-[85vh] py-32 px-6 overflow-hidden border-b border-slate-800/80 flex items-center">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <img
             src="/images/outbound2.png"
             alt="Global travel destinations background"
-            className="w-full h-full object-cover object-center"
+            className="cinematic-hero-image w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-linear-to-r from-slate-950 via-slate-950/90 to-slate-950/60" />
-          <div className="absolute inset-0 bg-linear-to-b from-transparent via-slate-950/50 to-slate-900" />
+          <div className="cinematic-light-streak" />
+          <div className="cinematic-light-streak cinematic-light-streak-two" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.82)_0%,rgba(15,23,42,0.68)_38%,rgba(15,23,42,0.52)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.12)_0%,rgba(15,23,42,0.22)_38%,rgba(2,6,23,0.72)_100%)]" />
         </div>
 
         <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-175 h-87.5 bg-emerald-500/15 blur-[130px] rounded-full pointer-events-none z-0" />
 
         <div className="max-w-7xl mx-auto w-full relative z-10">
 
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 max-w-4xl">
-            <span className="text-white" >Let’s Design Your</span> <span className="text-emerald-400 underline decoration-emerald-500/30 underline-offset-8">Next Journey</span>
+          <h1 className="premium-hero-title text-4xl md:text-6xl font-extrabold tracking-[-0.04em] mb-6 max-w-4xl leading-[0.96]">
+            <span className="text-white" >Let’s Design Your</span> <span className="bg-gradient-to-r from-emerald-200 via-emerald-400 to-cyan-200 bg-clip-text text-transparent">Next Journey</span>
           </h1>
-          <p className="max-w-3xl text-slate-300 text-base md:text-lg leading-relaxed drop-shadow-sm">
+          <p className="max-w-3xl text-slate-200/90 text-base md:text-lg leading-relaxed drop-shadow-[0_6px_18px_rgba(2,6,23,0.6)] font-medium">
             Whether you are booking an upcoming group tour or customizing a private multi-destination expedition, our travel architects are ready to assist you.
           </p>
         </div>

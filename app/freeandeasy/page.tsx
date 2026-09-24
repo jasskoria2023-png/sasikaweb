@@ -191,26 +191,99 @@ export default function GroupToursPage() {
       
       {/* HERO SECTION */}
       <section className="relative min-h-[85vh] py-32 px-6 border-b border-slate-800 overflow-hidden flex items-center">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/images/Maldives.jpeg"
-            alt="Maldives tropical island background"
-            className="w-full h-full object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-linear-to-r from-slate-950 via-slate-950/90 to-slate-950/60" />
-          <div className="absolute inset-0 bg-linear-to-b from-transparent via-slate-950/50 to-slate-900" />
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <div className="hero-single-image" />
+          <div className="hero-light-streak hero-light-streak-one" />
+          <div className="hero-light-streak hero-light-streak-two" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.82)_0%,rgba(15,23,42,0.68)_38%,rgba(15,23,42,0.52)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.12)_0%,rgba(15,23,42,0.22)_38%,rgba(2,6,23,0.72)_100%)]" />
         </div>
 
         <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-175 h-87.5 bg-emerald-500/15 blur-[130px] rounded-full pointer-events-none z-0" />
 
+        <style jsx>{`
+          .premium-hero-title {
+            text-shadow: 0 12px 40px rgba(2, 6, 23, 0.8);
+          }
+
+          .hero-single-image {
+            position: absolute;
+            inset: -8% -4% -6% -4%;
+            background-image: linear-gradient(rgba(15, 23, 42, 0.18), rgba(15, 23, 42, 0.22)), url('/images/Maldives.jpeg');
+            background-size: cover;
+            background-position: center center;
+            filter: brightness(0.62) saturate(1.35) contrast(1.22);
+            transform: scale(1.12);
+            animation: heroSingleImageMove 20s ease-in-out infinite alternate;
+          }
+
+          .hero-light-streak {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(
+              120deg,
+              transparent 0%,
+              rgba(255, 255, 255, 0.14) 20%,
+              rgba(255, 255, 255, 0.28) 28%,
+              rgba(250, 204, 21, 0.10) 32%,
+              transparent 45%,
+              transparent 100%
+            );
+            opacity: 0.7;
+            filter: blur(12px);
+            transform: translate3d(-10%, 0, 0);
+            animation: heroLightDrift 18s ease-in-out infinite alternate;
+          }
+
+          .hero-light-streak-two {
+            transform: translate3d(12%, 10%, 0) scale(1.08);
+            animation-duration: 24s;
+            opacity: 0.55;
+            background: linear-gradient(
+              120deg,
+              transparent 0%,
+              rgba(125, 211, 252, 0.10) 22%,
+              rgba(255, 255, 255, 0.18) 32%,
+              rgba(255, 255, 255, 0.06) 48%,
+              transparent 72%,
+              transparent 100%
+            );
+          }
+
+          @keyframes heroSingleImageMove {
+            0% {
+              transform: scale(1.12) translate3d(0, 0, 0);
+            }
+            100% {
+              transform: scale(1.24) translate3d(-2%, 3%, 0);
+            }
+          }
+
+          @keyframes heroLightDrift {
+            0% {
+              transform: translate3d(-12%, 4%, 0) scaleX(0.94);
+              opacity: 0.18;
+            }
+            50% {
+              transform: translate3d(8%, -2%, 0) scaleX(1.04);
+              opacity: 0.7;
+            }
+            100% {
+              transform: translate3d(18%, 6%, 0) scaleX(1.12);
+              opacity: 0.22;
+            }
+          }
+        `}</style>
+
         <div className="max-w-7xl mx-auto relative z-10 w-full">
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-widest mb-6">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/8 border border-white/15 text-emerald-200 shadow-[0_0_24px_rgba(16,185,129,0.12)] backdrop-blur-sm text-xs font-semibold uppercase tracking-[0.22em] mb-6">
             <Globe2 size={14} /> Curated International Free and Easy Tours
           </span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tight mb-6 max-w-4xl">
-            Discover The World <span className="text-emerald-400">Together.</span>
+          <h1 className="premium-hero-title text-4xl md:text-6xl lg:text-7xl font-black tracking-[-0.04em] text-white mb-6 max-w-4xl leading-[0.96]">
+            Discover The World <span className="bg-gradient-to-r from-emerald-200 via-emerald-400 to-cyan-200 bg-clip-text text-transparent drop-shadow-[0_12px_28px_rgba(16,185,129,0.35)]">Together.</span>
           </h1>
-          <p className="text-slate-300 text-base md:text-xl max-w-3xl leading-relaxed mb-10 drop-shadow-sm">
+          <p className="text-slate-200/90 text-base md:text-xl max-w-3xl leading-relaxed mb-10 drop-shadow-[0_6px_18px_rgba(2,6,23,0.6)] font-medium">
             Expertly planned Free and Easy Tours itineraries with end-to-end logistics, quality accommodations, and dedicated on-ground guides.
           </p>
 

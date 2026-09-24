@@ -93,15 +93,17 @@ export default function CorporateToursPage() {
 {/* HERO SECTION */}
       <section className="relative py-32 px-6 overflow-hidden border-b border-slate-800/80 min-h-[85vh] flex items-center">
         {/* Background Image Container */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <img
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000"
             alt="Corporate Skyscrapers Background"
-            className="w-full h-full object-cover object-center"
+            className="cinematic-hero-image w-full h-full object-cover object-center"
           />
           {/* Gradient Overlay for Text Contrast */}
-          <div className="absolute inset-0 bg-linear-to-r from-slate-950 via-slate-950/90 to-slate-950/60" />
-          <div className="absolute inset-0 bg-linear-to-b from-transparent via-slate-950/50 to-slate-900" />
+          <div className="cinematic-light-streak" />
+          <div className="cinematic-light-streak cinematic-light-streak-two" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.82)_0%,rgba(15,23,42,0.68)_38%,rgba(15,23,42,0.52)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.12)_0%,rgba(15,23,42,0.22)_38%,rgba(2,6,23,0.72)_100%)]" />
         </div>
 
         {/* Emerald Ambient Glow */}
@@ -109,14 +111,14 @@ export default function CorporateToursPage() {
 
         {/* Hero Content */}
         <div className="max-w-7xl mx-auto relative z-10 w-full">
-          <h1 className="text-1xl md:text-3xl lg:text-4xl font-extrabold tracking-tight mb-6 max-w-4xl">
+          <h1 className="premium-hero-title text-1xl md:text-3xl lg:text-4xl font-extrabold tracking-[-0.03em] mb-6 max-w-4xl leading-tight">
             <span className="text-white">Corporate Escapes & </span> <br />
-            <span className="text-emerald-400 underline decoration-emerald-500/30 underline-offset-8">
+            <span className="bg-gradient-to-r from-emerald-200 via-emerald-400 to-cyan-200 bg-clip-text text-transparent">
               Seamless Outbound Journeys.
             </span>
           </h1>
           
-          <p className="text-slate-300 text-base md:text-xl max-w-3xl leading-relaxed mb-6 drop-shadow-sm">
+          <p className="text-slate-200/90 text-base md:text-xl max-w-3xl leading-relaxed mb-6 drop-shadow-[0_6px_18px_rgba(2,6,23,0.6)] font-medium">
             Elevate your international business travel. We manage end-to-end global itineraries for corporate incentive trips, trade delegations, leadership retreats, and overseas conferences.
           </p>
 

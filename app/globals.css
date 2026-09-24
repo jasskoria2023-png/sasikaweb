@@ -62,3 +62,77 @@ body {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+.cinematic-hero-image {
+  filter: brightness(0.62) saturate(1.35) contrast(1.22);
+  transform: scale(1.12);
+  animation: cinematicHeroImageMove 20s ease-in-out infinite alternate;
+}
+
+.cinematic-light-streak {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.14) 20%,
+    rgba(255, 255, 255, 0.28) 28%,
+    rgba(250, 204, 21, 0.1) 32%,
+    transparent 45%,
+    transparent 100%
+  );
+  opacity: 0.7;
+  filter: blur(12px);
+  animation: cinematicLightDrift 18s ease-in-out infinite alternate;
+}
+
+.cinematic-light-streak-two {
+  transform: translate3d(12%, 10%, 0) scale(1.08);
+  animation-duration: 24s;
+  opacity: 0.55;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(125, 211, 252, 0.1) 22%,
+    rgba(255, 255, 255, 0.18) 32%,
+    rgba(255, 255, 255, 0.06) 48%,
+    transparent 72%,
+    transparent 100%
+  );
+}
+
+.premium-hero-title {
+  text-shadow: 0 12px 40px rgba(2, 6, 23, 0.8);
+}
+
+@keyframes cinematicHeroImageMove {
+  0% {
+    transform: scale(1.12) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.24) translate3d(-2%, 3%, 0);
+  }
+}
+
+@keyframes cinematicLightDrift {
+  0% {
+    transform: translate3d(-12%, 4%, 0) scaleX(0.94);
+    opacity: 0.18;
+  }
+  50% {
+    transform: translate3d(8%, -2%, 0) scaleX(1.04);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate3d(18%, 6%, 0) scaleX(1.12);
+    opacity: 0.22;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-hero-image,
+  .cinematic-light-streak {
+    animation: none;
+  }
+}

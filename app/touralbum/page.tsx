@@ -48,7 +48,33 @@ export default function TourAlbumPage() {
     <div className="bg-slate-950 min-h-screen text-slate-100 font-sans selection:bg-emerald-500 selection:text-slate-950">
       
       {/* HERO SECTION */}
-     
+      <section className="relative min-h-[62vh] py-28 px-6 overflow-hidden border-b border-slate-800/80 flex items-center">
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <img
+            src="/images/outbound1.jpg"
+            alt="Travel highlights from around the world"
+            className="cinematic-hero-image w-full h-full object-cover object-center"
+          />
+          <div className="cinematic-light-streak" />
+          <div className="cinematic-light-streak cinematic-light-streak-two" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.84)_0%,rgba(15,23,42,0.66)_42%,rgba(15,23,42,0.5)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.12)_0%,rgba(2,6,23,0.72)_100%)]" />
+        </div>
+
+        <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-175 h-87.5 bg-emerald-500/15 blur-[130px] rounded-full pointer-events-none z-0" />
+
+        <div className="max-w-7xl mx-auto w-full relative z-10">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/8 border border-white/15 text-emerald-200 shadow-[0_0_24px_rgba(16,185,129,0.12)] backdrop-blur-sm text-xs font-semibold uppercase tracking-[0.22em] mb-6">
+            <Camera size={14} /> Travel Video Library
+          </span>
+          <h1 className="premium-hero-title text-4xl md:text-6xl lg:text-7xl font-black tracking-[-0.04em] text-white mb-6 max-w-4xl leading-[0.96]">
+            Relive The Journey <span className="bg-linear-to-r from-emerald-200 via-emerald-400 to-cyan-200 bg-clip-text text-transparent">Together.</span>
+          </h1>
+          <p className="text-slate-200/90 text-base md:text-xl max-w-3xl leading-relaxed drop-shadow-[0_6px_18px_rgba(2,6,23,0.6)] font-medium">
+            Explore memorable group tours, corporate journeys and destination highlights through our travel video collection.
+          </p>
+        </div>
+      </section>
 
       {/* FEATURED TOUR VIDEO PLAYER */}
       <section ref={playerRef} className="py-12 px-6 relative z-10 bg-slate-950">

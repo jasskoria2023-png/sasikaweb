@@ -202,26 +202,28 @@ export default function GroupToursPage() {
       
       {/* HERO SECTION */}
       <section className="relative min-h-[85vh] py-32 px-6 border-b border-slate-800 overflow-hidden flex items-center">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <img
             src="/images/azerbaijan.jpeg"
             alt="Azerbaijan and Georgia travel background"
-            className="w-full h-full object-cover object-center"
+            className="cinematic-hero-image w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-linear-to-r from-slate-950 via-slate-950/90 to-slate-950/60" />
-          <div className="absolute inset-0 bg-linear-to-b from-transparent via-slate-950/50 to-slate-900" />
+          <div className="cinematic-light-streak" />
+          <div className="cinematic-light-streak cinematic-light-streak-two" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.82)_0%,rgba(15,23,42,0.68)_38%,rgba(15,23,42,0.52)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,23,42,0.12)_0%,rgba(15,23,42,0.22)_38%,rgba(2,6,23,0.72)_100%)]" />
         </div>
 
         <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-175 h-87.5 bg-emerald-500/15 blur-[130px] rounded-full pointer-events-none z-0" />
 
         <div className="max-w-7xl mx-auto relative z-10 w-full">
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-widest mb-6">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/8 border border-white/15 text-emerald-200 shadow-[0_0_24px_rgba(16,185,129,0.12)] backdrop-blur-sm text-xs font-semibold uppercase tracking-[0.22em] mb-6">
             <Globe2 size={14} /> Curated International Group Tours
           </span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tight mb-6 max-w-4xl">
-            Discover The World <span className="text-emerald-400">Together.</span>
+          <h1 className="premium-hero-title text-4xl md:text-6xl lg:text-7xl font-black tracking-[-0.04em] text-white mb-6 max-w-4xl leading-[0.96]">
+            Discover The World <span className="bg-linear-to-r from-emerald-200 via-emerald-400 to-cyan-200 bg-clip-text text-transparent drop-shadow-[0_12px_28px_rgba(16,185,129,0.35)]">Together.</span>
           </h1>
-          <p className="text-slate-300 text-base md:text-xl max-w-3xl leading-relaxed mb-10 drop-shadow-sm">
+          <p className="text-slate-200/90 text-base md:text-xl max-w-3xl leading-relaxed mb-10 drop-shadow-[0_6px_18px_rgba(2,6,23,0.6)] font-medium">
             Expertly planned group itineraries with end-to-end logistics, quality accommodations, and dedicated on-ground guides.
           </p>
 
