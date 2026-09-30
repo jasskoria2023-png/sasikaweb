@@ -5,23 +5,23 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import HorizontalFlagBar from './HorizontalFlagBar'
 
 const slides = [
-  {
+    {
     type: 'image',
-    url: '/images/slide1.png',
+    url: '/images/maldives.jpg',
     title: 'Explore the World',
-    subtitle: 'Discover amazing destinations'
-  },
-  {
-    type: 'image',
-    url: '/images/slide2.png',
-    title: 'Adventure Awaits',
     subtitle: 'Start your journey today'
   },
   {
+    type: 'image',
+    url: '/images/japan.jpg',
+    title: 'Adventure Awaits',
+    subtitle: 'Discover amazing destinations'
+  },
+  {
     type: 'video',
-    url: '/video/slide3.mp4',
-    title: 'Luxury Travel',
-    subtitle: 'Experience premium tours'
+    url: '/video/slide4.mp4',
+    title: '',
+    subtitle: ''
   }
 ]
 
@@ -30,11 +30,15 @@ export default function ImageSlider() {
 
   // Auto slide
   useEffect(() => {
+    if (slides[current].type === 'video') {
+      return
+    }
+
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length)
     }, 5000)
     return () => clearInterval(interval)
-  }, [])
+  }, [current])
 
   const prevSlide = () => {
     setCurrent(current === 0 ? slides.length - 1 : current - 1)
@@ -67,8 +71,8 @@ export default function ImageSlider() {
               className={`premium-slide-media w-full h-full object-cover ${index === current ? 'premium-slide-media-active' : ''}`}
               autoPlay
               muted
-              loop
               playsInline
+              onEnded={() => setCurrent((prev) => (prev + 1) % slides.length)}
             />
           )}
 
