@@ -82,6 +82,72 @@ export default function CorporateToursPage() {
     }
   ];
 
+  const corporateOffers = [
+    {
+      icon: Users,
+      title: "Corporate Group Travel",
+      description: "End-to-end travel arrangements for company groups, delegations and business teams."
+    },
+    {
+      icon: Award,
+      title: "Incentive Travel",
+      description: "Reward and motivate your employees with memorable international travel experiences."
+    },
+    {
+      icon: Sparkles,
+      title: "Corporate Retreats",
+      description: "Purpose-designed trips combining team building, relaxation and strategic engagement."
+    },
+    {
+      icon: Globe2,
+      title: "MICE & Business Travel",
+      description: "Travel solutions for meetings, incentives, conferences and exhibitions."
+    },
+    {
+      icon: Plane,
+      title: "Corporate Air Travel",
+      description: "Group flight bookings, ticketing, itinerary management and travel coordination."
+    },
+    {
+      icon: Building2,
+      title: "Accommodation & Transfers",
+      description: "Carefully selected hotels, private transportation, airport transfers and local support."
+    }
+  ];
+
+  const corporateProcess = [
+    {
+      number: "01",
+      title: "Understand",
+      icon: Users,
+      description: "We understand your company's objectives, group size and budget."
+    },
+    {
+      number: "02",
+      title: "Design",
+      icon: Sparkles,
+      description: "We create a customized itinerary around your requirements."
+    },
+    {
+      number: "03",
+      title: "Coordinate",
+      icon: Calendar,
+      description: "Flights, hotels, transport, activities and logistics are professionally coordinated."
+    },
+    {
+      number: "04",
+      title: "Travel",
+      icon: Headphones,
+      description: "Our team provides dedicated support throughout the journey."
+    },
+    {
+      number: "05",
+      title: "Deliver",
+      icon: CheckCircle2,
+      description: "Your team returns with a smooth, memorable and professionally managed experience."
+    }
+  ];
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     alert('Thank you! Our Corporate Travel Manager will contact you within 2 business hours.');
@@ -144,20 +210,54 @@ export default function CorporateToursPage() {
       <section className="border-b border-slate-800 bg-slate-950/60 py-10 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div>
-            <div className="text-3xl md:text-4xl font-extrabold text-white font-mono mb-1">500+</div>
+            <div className="text-3xl md:text-4xl font-extrabold text-white font-mono mb-1">5+</div>
             <div className="text-xs font-bold text-emerald-400 uppercase tracking-wider">Corporate Groups Managed</div>
           </div>
           <div>
-            <div className="text-3xl md:text-4xl font-extrabold text-white font-mono mb-1">99.8%</div>
+            <div className="text-3xl md:text-4xl font-extrabold text-white font-mono mb-1">100%</div>
             <div className="text-xs font-bold text-emerald-400 uppercase tracking-wider">Visa Processing Success</div>
           </div>
           <div>
-            <div className="text-3xl md:text-4xl font-extrabold text-white font-mono mb-1">35+</div>
+            <div className="text-3xl md:text-4xl font-extrabold text-white font-mono mb-1">5+</div>
             <div className="text-xs font-bold text-emerald-400 uppercase tracking-wider">International Destinations</div>
           </div>
           <div>
             <div className="text-3xl md:text-4xl font-extrabold text-white font-mono mb-1">24/7</div>
             <div className="text-xs font-bold text-emerald-400 uppercase tracking-wider">On-Ground Concierge</div>
+          </div>
+        </div>
+      </section>
+
+      {/* WHAT WE OFFER */}
+      <section className="bg-slate-950 py-20 px-6 border-b border-slate-800">
+        <div className="max-w-7xl mx-auto">
+          <div className="max-w-2xl mb-12">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-emerald-400">
+              What We Offer
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-white mt-2 mb-4">
+              Corporate travel built around your objectives
+            </h2>
+            <p className="text-slate-400 text-sm leading-relaxed">
+              From the first flight booking to the final transfer, our team manages every detail of your corporate journey.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {corporateOffers.map((offer) => {
+              const Icon = offer.icon;
+              return (
+                <div key={offer.title} className="group p-7 rounded-3xl bg-slate-900 border border-slate-800 hover:border-emerald-500/50 transition-colors">
+                  <div className="p-3 bg-emerald-500/10 text-emerald-400 rounded-2xl w-fit border border-emerald-500/20 mb-6">
+                    <Icon size={24} />
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">
+                    {offer.title}
+                  </h3>
+                  <p className="text-sm text-slate-400 leading-relaxed">{offer.description}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -236,6 +336,41 @@ export default function CorporateToursPage() {
             ))}
           </div>
 
+        </div>
+      </section>
+
+      {/* CORPORATE TOUR PROCESS */}
+      <section className="bg-white text-slate-900 py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <span className="text-xs font-extrabold uppercase tracking-widest text-emerald-600">
+                Our Corporate Tour Process
+              </span>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mt-2">
+                From brief to journey, professionally managed
+              </h2>
+            </div>
+            <p className="text-slate-600 text-sm max-w-md leading-relaxed">
+              A clear, collaborative process keeps your team informed and your travel plans moving smoothly.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+            {corporateProcess.map((step) => {
+              const Icon = step.icon;
+              return (
+                <div key={step.number} className="relative border-t-2 border-emerald-500 pt-5">
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="text-3xl font-black text-emerald-600/30">{step.number}</span>
+                    <Icon size={22} className="text-emerald-600" />
+                  </div>
+                  <h3 className="text-lg font-extrabold text-slate-900 mb-2">{step.title}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">{step.description}</p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
