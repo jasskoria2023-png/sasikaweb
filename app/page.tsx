@@ -286,10 +286,10 @@ export default function Home() {
                     </span>
                     <Link
                       href={TOUR_DETAIL_LINKS[v.title] ?? '/freeandeasy'}
-                      className="inline-flex items-center justify-center rounded-xl bg-slate-200 p-2 text-slate-700 transition-all group-hover:bg-emerald-600 group-hover:text-white"
+                      className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-slate-700 transition-colors hover:border-emerald-500 hover:text-emerald-600"
                       aria-label={`View details for ${v.title}`}
                     >
-                      <ArrowUpRight size={18} />
+                      Details
                     </Link>
                   </div>
                 </div>

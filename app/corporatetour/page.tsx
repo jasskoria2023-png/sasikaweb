@@ -291,9 +291,9 @@ export default function CorporateToursPage() {
                   <div className="flex items-center gap-2">
                     <Link
                       href={`/corporatetour/${toCorporatePackageSlug(pkg.id)}`}
-                      className="text-xs font-bold text-slate-900 flex items-center gap-1 hover:text-emerald-600 transition-colors"
+                      className="inline-flex items-center gap-1 rounded-xl border border-slate-200 bg-white px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-slate-700 transition-colors hover:border-emerald-500 hover:text-emerald-600"
                     >
-                      Details <ArrowUpRight size={14} />
+                      Details
                     </Link>
                     <a 
                       href="#rfq-form"
