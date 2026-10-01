@@ -24,9 +24,30 @@ export async function generateMetadata({
     };
   }
 
+  const title = `${tour.destination} Group Tour Package`;
+  const description = `${tour.destination} ${tour.category.toLowerCase()} group tour from Sri Lanka. ${tour.duration}. ${tour.description}`
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 160);
+  const canonical = `/grouptours/${slug}`;
+
   return {
-    title: `${tour.destination} Tour Package`,
-    description: `${tour.title} - ${tour.duration}. Explore our ${tour.destination} group tour package.`,
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      type: 'website',
+      title: `${title} | Vactionstnh.com`,
+      description,
+      url: canonical,
+      images: [{ url: tour.image, alt: `${tour.destination} group tour package` }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${title} | Vactionstnh.com`,
+      description,
+      images: [tour.image],
+    },
   };
 }
 

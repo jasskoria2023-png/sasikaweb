@@ -17,18 +17,29 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  applicationName: "Vactionstnh.com",
+  authors: [{ name: "Vactionstnh.com" }],
+  creator: "Vactionstnh.com",
+  publisher: "Vactionstnh.com",
+  category: "travel",
   title: {
     default: "Vactionstnh.com | International Travel & Holidays",
     template: "%s | Vactionstnh.com",
   },
-  description: "Plan international group tours, free and easy holidays, corporate travel, visa assistance, and flights with Vactionstnh.com.",
+  description:
+    "Book international group tours, free and easy holidays, corporate travel, visa assistance, and flight bookings with Vactionstnh.com, Sri Lanka’s trusted travel partner.",
   keywords: [
     "Sri Lanka travel agency",
     "international group tours",
     "outbound holidays",
-    "corporate travel",
-    "visa assistance",
-    "flight ticketing",
+    "free and easy holidays",
+    "corporate travel Sri Lanka",
+    "visa assistance Sri Lanka",
+    "flight ticketing Sri Lanka",
+    "Maldives holiday packages",
+    "Bangkok shopping tours",
+    "Dubai holiday packages",
+    "travel agency in Sri Lanka",
   ],
   alternates: {
     canonical: "/",
@@ -38,7 +49,8 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "Vactionstnh.com",
     title: "Vactionstnh.com | International Travel & Holidays",
-    description: "Discover international group tours, customized holidays, corporate travel, visa assistance, and flight services from Sri Lanka.",
+    description:
+      "Discover international group tours, customized holidays, corporate travel, visa assistance, and flight services from Sri Lanka.",
     images: [
       {
         url: "/images/logo.jpg",
@@ -65,6 +77,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/images/tablogo.png",
+  },
+  other: {
+    "theme-color": "#0f172a",
+    "msapplication-TileColor": "#0f172a",
   },
 };
 

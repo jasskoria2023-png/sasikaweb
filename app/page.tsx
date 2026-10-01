@@ -176,7 +176,29 @@ export default function Home() {
   };
 
   return (
-    <main className="bg-white text-slate-100 min-h-screen selection:bg-emerald-500 selection:text-slate-950">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "TravelAgency",
+            name: "Vactionstnh.com",
+            url: "https://vactionstnh.com",
+            description:
+              "Travel agency offering international group tours, free and easy holidays, corporate travel, visa assistance, and flight ticketing services from Sri Lanka.",
+            telephone: "+94 11 234 5678",
+            areaServed: "Sri Lanka",
+            sameAs: [],
+            address: {
+              "@type": "PostalAddress",
+              addressCountry: "LK",
+            },
+          }),
+        }}
+      />
+
+      <main className="bg-white text-slate-100 min-h-screen selection:bg-emerald-500 selection:text-slate-950">
       
       {/* HERO SECTION */}
       <section id="hero" className="relative min-h-screen overflow-hidden">
@@ -434,5 +456,6 @@ export default function Home() {
 
       <Footer />
     </main>
+    </>
   );
 }

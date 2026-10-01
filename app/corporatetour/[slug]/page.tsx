@@ -22,9 +22,30 @@ export async function generateMetadata({
     return { title: 'Package Not Found' };
   }
 
+  const title = `${pkg.destination} Corporate Travel Package`;
+  const description = `${pkg.title}: ${pkg.duration} ${pkg.category.toLowerCase()} travel package for business groups. ${pkg.description}`
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 160);
+  const canonical = `/corporatetour/${slug}`;
+
   return {
-    title: `${pkg.destination} Corporate Package`,
-    description: `${pkg.title} - ${pkg.duration}. Explore our ${pkg.destination} corporate travel package.`,
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      type: 'website',
+      title: `${title} | Vactionstnh.com`,
+      description,
+      url: canonical,
+      images: [{ url: pkg.image, alt: `${pkg.destination} corporate travel package` }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${title} | Vactionstnh.com`,
+      description,
+      images: [pkg.image],
+    },
   };
 }
 

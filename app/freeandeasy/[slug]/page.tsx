@@ -22,9 +22,30 @@ export async function generateMetadata({
     return { title: 'Tour Not Found' };
   }
 
+  const title = `${tour.destination} Free & Easy Holiday Package`;
+  const description = `${tour.destination} free and easy holiday from Sri Lanka. ${tour.duration}. ${tour.description}`
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 160);
+  const canonical = `/freeandeasy/${slug}`;
+
   return {
-    title: `${tour.destination} Free & Easy Package`,
-    description: `${tour.title} - ${tour.duration}. Explore our ${tour.destination} free and easy travel package.`,
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      type: 'website',
+      title: `${title} | Vactionstnh.com`,
+      description,
+      url: canonical,
+      images: [{ url: tour.image, alt: `${tour.destination} holiday package` }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${title} | Vactionstnh.com`,
+      description,
+      images: [tour.image],
+    },
   };
 }
 
