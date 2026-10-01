@@ -75,9 +75,9 @@ const Footer = () => {
         <div className="border-t border-slate-800 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
           <p>© {currentYear} vactionstnh. All rights reserved.</p>
           <div className="flex gap-8">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Governance</a>
-            <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
+            <a href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="/terms-of-governance" className="hover:text-white transition-colors">Terms of Governance</a>
+            <a href="/cookie-policy" className="hover:text-white transition-colors">Cookie Policy</a>
           </div>
         </div>
       </div>

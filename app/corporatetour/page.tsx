@@ -1,12 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { 
   Building2, Briefcase, Globe2, ShieldCheck, Zap, 
   ArrowUpRight, CheckCircle2, Plane, Award, Users, 
   Sparkles, Calendar, FileText, Headphones
 } from 'lucide-react';
 import Footer from '../components/Footer';
+import { corporatePackages, toCorporatePackageSlug } from './packages-data';
 
 export default function CorporateToursPage() {
   const [formData, setFormData] = useState({
@@ -19,45 +21,6 @@ export default function CorporateToursPage() {
     travelDate: '',
     notes: ''
   });
-
-  const corporatePackages = [
-    {
-      title: "Singapore Tech & Innovation Summit",
-      destination: "Singapore",
-      image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&q=80&w=800",
-      description: "Ideal for corporate delegations. Includes 5-star business stays, Marina Bay event venues, tech park tours, and private airport transfers.",
-      duration: "5 Days / 4 Nights",
-      category: "Delegation & Trade",
-      highlights: ["MICE Venues", "Fast-track Visas", "Gala Dinner Setup"]
-    },
-    {
-      title: "Swiss Alps Leadership Retreat",
-      destination: "Switzerland",
-      image: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&q=80&w=800",
-      description: "Executive leadership retreat featuring private chalet accommodation, high-speed Glacier Express passes, and curated team strategy sessions.",
-      duration: "7 Days / 6 Nights",
-      category: "Executive Retreat",
-      highlights: ["Private Chalet", "Alpine Excursions", "Strategy Hubs"]
-    },
-    {
-      title: "Japan Corporate Excellence Tour",
-      destination: "Tokyo & Kyoto",
-      image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=800",
-      description: "Combine high-tech facility visits with cultural team bonding. Shinkansen bullet train passes, VIP dining, and dedicated ground handlers.",
-      duration: "8 Days / 7 Nights",
-      category: "Incentive Travel",
-      highlights: ["Shinkansen Passes", "Cultural Bonding", "Dedicated Escort"]
-    },
-    {
-      title: "Dubai MICE & Expo VIP Package",
-      destination: "Dubai, UAE",
-      image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=800",
-      description: "Premium incentive program with Burj Khalifa VIP access, private desert gala dinners, luxury yacht charters, and convention support.",
-      duration: "4 Days / 3 Nights",
-      category: "Incentives & Expo",
-      highlights: ["Yacht Charter", "Desert Gala", "Convention Passes"]
-    }
-  ];
 
   const corporatePillars = [
     {
@@ -321,16 +284,25 @@ export default function CorporateToursPage() {
                 </div>
 
                 {/* Card Footer */}
-                <div className="px-6 pb-6 pt-4 border-t border-slate-200/80 flex items-center justify-between">
+                <div className="px-6 pb-6 pt-4 border-t border-slate-200/80 flex items-center justify-between gap-2">
                   <span className="text-xs font-extrabold text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-lg">
                     {pkg.duration}
                   </span>
-                  <a 
-                    href="#rfq-form"
-                    className="text-xs font-bold text-slate-900 flex items-center gap-1 hover:text-emerald-600 transition-colors"
-                  >
-                    Inquire <ArrowUpRight size={14} />
-                  </a>
+                  <div className="flex items-center gap-2">
+                    <Link
+                      href={`/corporatetour/${toCorporatePackageSlug(pkg.id)}`}
+                      className="text-xs font-bold text-slate-900 flex items-center gap-1 hover:text-emerald-600 transition-colors"
+                    >
+                      Details <ArrowUpRight size={14} />
+                    </Link>
+                    <a 
+                      href="#rfq-form"
+                      className="text-xs font-bold text-slate-900 flex items-center gap-1 hover:text-emerald-600 transition-colors"
+                      aria-label="Inquire about this package"
+                    >
+                      Inquire <ArrowUpRight size={14} />
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}

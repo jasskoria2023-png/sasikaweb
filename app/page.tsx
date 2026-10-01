@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState, useMemo, useEffect } from 'react';
 import {
   ArrowUpRight,
@@ -95,6 +96,16 @@ const MONTHS = [
   "January", "February", "March", "April", "May", "June", 
   "July", "August", "September", "October", "November", "December"
 ];
+
+const TOUR_DETAIL_LINKS: Record<string, string> = {
+  'Maldives Resort Escape': '/freeandeasy/maldives-freeandeasy',
+  'Chennai Shopping Escape': '/freeandeasy/chennai-shopping-freeandeasy',
+  'Bangkok Shopping Escape': '/freeandeasy/bangkok-shopping-freeandeasy',
+  'Kuala Lumpur, Malaysia': '/freeandeasy/kuala-lumpur-malaysia-freeandeasy',
+  'Singapore – 3 Nights / 4 Days': '/freeandeasy',
+  'Dubai Shopping Escape': '/freeandeasy/dubai-freeandeasy',
+  'Phuket, Thailand': '/freeandeasy/phuket-thailand-freeandeasy',
+};
 
 export default function Home() {
   const [selectedCountry, setSelectedCountry] = useState<string>('All');
@@ -269,16 +280,17 @@ export default function Home() {
                   </div>
 
                   {/* Card Footer */}
-                  <div className="p-6 pt-0 border-t border-slate-200 mt-2 flex items-center justify-between">
+                  <div className="p-6 pt-0 border-t border-slate-200 mt-2 flex items-center justify-between gap-2">
                     <span className="text-[10px] font-black uppercase tracking-wider text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-md">
                       {v.metrics}
                     </span>
-                    <button 
-                      className="p-2 rounded-xl bg-slate-200 group-hover:bg-emerald-600 group-hover:text-white text-slate-700 transition-all"
-                      aria-label="View Details"
+                    <Link
+                      href={TOUR_DETAIL_LINKS[v.title] ?? '/freeandeasy'}
+                      className="inline-flex items-center justify-center rounded-xl bg-slate-200 p-2 text-slate-700 transition-all group-hover:bg-emerald-600 group-hover:text-white"
+                      aria-label={`View details for ${v.title}`}
                     >
                       <ArrowUpRight size={18} />
-                    </button>
+                    </Link>
                   </div>
                 </div>
               ))}

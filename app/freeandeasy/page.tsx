@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import Link from 'next/link';
 import { 
   ShieldCheck, 
   ArrowUpRight, 
@@ -16,6 +17,7 @@ import {
 } from 'lucide-react';
 import Footer from '../components/Footer';
 import { sendInquiryEmail } from '../actions/sendEmail';
+import { tours, toTourSlug } from './tours-data';
 
 interface TourPackage {
   id: string;
@@ -55,86 +57,6 @@ export default function GroupToursPage() {
   ];
 
   const categories = ["All", "Cultural", "Luxury", "Leisure", "Seasonal"];
-
-  const tours: TourPackage[] = [
-    {
-      id: "Maldives_freeandeasy",
-      title: "Escape to paradise ",
-      destination: "Maldives",
-      image: "/images/Maldives.jpeg",
-      description: "Escape to paradise with our Maldives Free & Easy Tour! Enjoy pristine beaches, crystal-clear turquoise waters and stunning island scenery at your own pace. Relax, unwind and create your perfect tropical getaway with the freedom to explore, enjoy water activities or simply soak up the sun in one of the world’s most beautiful destinations.",
-      duration: "",
-      departureMonths: [],
-      category: "Leisure",
-      priceFrom: "Please contact for "
-    },
-    {
-      id: "Phuket_Thailand__freeandeasy",
-      title: "Discover the tropical paradise ",
-      destination: "Phuket, Thailand",
-      image: "/images/Phuket_Thailand.jpeg",
-      description: "Discover the tropical paradise of Phuket, where stunning beaches, turquoise waters and vibrant island life come together. Enjoy breathtaking scenery, exciting excursions, delicious Thai cuisine and unforgettable coastal experiences. Perfect for travellers looking for the ideal mix of relaxation, adventure and fun.",
-      duration: "",
-      departureMonths: [],
-      category: "Leisure",
-      priceFrom: "Please contact for "
-    },
-    {
-      id: "Langkawi",
-      title: "Breathtaking beauty of Langkawi ",
-      destination: "Langkawi",
-      image: "/images/Langkawi.jpeg",
-      description: "Discover the breathtaking beauty of Langkawi, Malaysia’s tropical island paradise. Enjoy pristine beaches, turquoise waters, stunning viewpoints, island adventures and rich natural scenery. From relaxing escapes to exciting experiences, Langkawi offers the perfect blend of nature, adventure and relaxation for an unforgettable holiday.",
-      duration: "",
-      departureMonths: [],
-      category: "Leisure",
-      priceFrom: "Please contact for " 
-    },
-    {
-      id: "Chennai_freeandeasy",
-      title: "Chennai Shopping Tour",
-      destination: "Chennai, India",
-      image: "/images/Chennai.jpeg",
-      description: "Experience the best of Chennai on a 4-day shopping getaway, exploring popular shopping destinations for sarees, fashion, jewellery, accessories and traditional Indian products. Enjoy comfortable accommodation, delicious local cuisine and plenty of time to shop, explore and experience the vibrant city of Chennai.",
-      duration: "4 Days / 3 Nights",
-      departureMonths: [],
-      category: "Shopping",
-      priceFrom: "Please contact for "
-    },
-    {
-      id: "Bangkok_Shopping_freeandeasy",
-      title: "Bangkok Shopping Tour",
-      destination: "Bangkok, Thailand",
-      image: "/images/Bangkok_Thailand.jpeg",
-      description: "Discover Bangkok, a shopper’s paradise offering everything from trendy fashion and electronics to beauty products, souvenirs and local treasures. Enjoy a fun-filled shopping escape with vibrant markets, modern malls, delicious Thai cuisine and the exciting atmosphere of Thailand’s capital.",
-      duration: "",
-      departureMonths: [""],
-      category: "Shopping",
-      priceFrom: "Please contact for "
-    },
-    {
-      id: "Kuala_Lumpur_Malayasia_freeandeasy ",
-      title: "World-class shopping malls",
-      destination: "Kuala Lumpur, Malaysia",
-      image: "/images/Kuala_Lumpur.jpeg",
-      description: "Experience the vibrant city of Kuala Lumpur at your own pace. Enjoy a relaxing getaway with the freedom to explore iconic landmarks, world-class shopping malls, lively markets and delicious Malaysian cuisine. Perfect for travellers looking for a flexible city escape filled with shopping, sightseeing and leisure.",
-      duration: "",
-      departureMonths: [],
-      category: "Shopping",
-      priceFrom: "Please contact for "
-    },
-    {
-      id: "Dubai_freeandeasy",
-      title: " Glamour and excitement of Dubai ",
-      destination: "Dubai",
-      image: "/images/Dubai.jpeg",
-      description: "Experience the glamour and excitement of Dubai on a flexible 4-day getaway. Discover iconic landmarks, world-class shopping, stunning architecture and vibrant entertainment at your own pace. Enjoy the freedom to create your own Dubai experience—perfect for shopping, sightseeing, dining and leisure.",
-      duration: "",
-      departureMonths: [],
-      category: "Leisure",
-      priceFrom: "Please contact for "
-    }
-  ];
 
 
   // Filter Logic
@@ -432,13 +354,21 @@ export default function GroupToursPage() {
                       <span>{tour.duration}</span>
                     </div>
 
-                    <a 
-                      href="#inquiry"
-                      className="p-2 rounded-xl bg-slate-200 group-hover:bg-emerald-600 group-hover:text-white text-slate-700 transition-all"
-                      aria-label="Inquire about this tour"
-                    >
-                      <ArrowUpRight size={18} />
-                    </a>
+                    <div className="flex items-center gap-2">
+                      <Link
+                        href={`/freeandeasy/${toTourSlug(tour.id)}`}
+                        className="inline-flex items-center gap-1 rounded-xl border border-slate-200 bg-white px-3 py-2 text-[11px] font-bold uppercase tracking-wider text-slate-700 transition-colors hover:border-emerald-500 hover:text-emerald-600"
+                      >
+                        Details
+                      </Link>
+                      <a 
+                        href="#inquiry"
+                        className="p-2 rounded-xl bg-slate-200 group-hover:bg-emerald-600 group-hover:text-white text-slate-700 transition-all"
+                        aria-label="Inquire about this tour"
+                      >
+                        <ArrowUpRight size={18} />
+                      </a>
+                    </div>
                   </div>
                 </div>
               ))}
