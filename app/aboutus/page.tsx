@@ -61,7 +61,7 @@ export default function AboutUs() {
 
   const team = [
     {
-      name: 'Shasika Rathnyake',
+      name: 'Sashika Ratnayake ',
       title: 'Founder & Managing Director',
       jobTitle: '“Travel has always been more than a business to me — it is a passion and a way of connecting people with the world.”»',
       image: '/images/sashika.jpeg',
